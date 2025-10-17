@@ -1,0 +1,29 @@
+{
+  "namespace": "com.cryptofirm.contracts.schemas",
+  "type": "record",
+  "name": "PlatformMetadata",
+  "doc": "Common platform metadata",
+  "fields": [
+    {
+      "name": "version",
+      "type": "string",
+      "doc": "Schema version"
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "doc": "Event source"
+    },
+    {
+      "name": "environment",
+      "type": "string",
+      "doc": "Deployment environment"
+    },
+    {
+      "name": "correlationId",
+      "type": ["null", "string"],
+      "doc": "Correlation ID for tracing",
+      "default": null
+    }
+  ]
+}

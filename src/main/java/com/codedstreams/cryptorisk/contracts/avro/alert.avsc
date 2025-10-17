@@ -1,0 +1,75 @@
+{
+  "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+  "type": "record",
+  "name": "RiskAlert",
+  "doc": "Risk alert event contract",
+  "fields": [
+    {
+      "name": "alertId",
+      "type": "string",
+      "doc": "Unique alert identifier"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Alert creation timestamp"
+    },
+    {
+      "name": "severity",
+      "type": {
+        "type": "enum",
+        "name": "AlertSeverity",
+        "symbols": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+      },
+      "doc": "Alert severity level"
+    },
+    {
+      "name": "patternType",
+      "type": "string",
+      "doc": "Risk pattern type"
+    },
+    {
+      "name": "userId",
+      "type": "string",
+      "doc": "User identifier"
+    },
+    {
+      "name": "customerId",
+      "type": "string",
+      "doc": "Customer account identifier"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "doc": "Alert description"
+    },
+    {
+      "name": "recommendedAction",
+      "type": "string",
+      "doc": "Recommended risk mitigation action"
+    },
+    {
+      "name": "triggeredEvents",
+      "type": {
+        "type": "map",
+        "values": "string"
+      },
+      "doc": "Map of triggered event details"
+    },
+    {
+      "name": "acknowledged",
+      "type": "boolean",
+      "doc": "Whether alert has been acknowledged",
+      "default": false
+    },
+    {
+      "name": "metadata",
+      "type": {
+        "type": "map",
+        "values": "string"
+      },
+      "doc": "Additional metadata",
+      "default": {}
+    }
+  ]
+}

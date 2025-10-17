@@ -1,0 +1,108 @@
+{
+  "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+  "type": "record",
+  "name": "CryptoTrade",
+  "doc": "Cryptocurrency trade event contract",
+  "fields": [
+    {
+      "name": "tradeId",
+      "type": "string",
+      "doc": "Unique trade identifier"
+    },
+    {
+      "name": "userId",
+      "type": "string",
+      "doc": "User identifier"
+    },
+    {
+      "name": "customerId",
+      "type": "string",
+      "doc": "Customer account identifier"
+    },
+    {
+      "name": "symbol",
+      "type": "string",
+      "doc": "Trading pair symbol e.g., BTC/USDT"
+    },
+    {
+      "name": "baseAsset",
+      "type": "string",
+      "doc": "Base asset e.g., BTC"
+    },
+    {
+      "name": "quoteAsset",
+      "type": "string",
+      "doc": "Quote asset e.g., USDT"
+    },
+    {
+      "name": "side",
+      "type": {
+        "type": "enum",
+        "name": "TradeSide",
+        "symbols": ["BUY", "SELL"]
+      },
+      "doc": "Trade side"
+    },
+    {
+      "name": "orderType",
+      "type": {
+        "type": "enum",
+        "name": "OrderType",
+        "symbols": ["MARKET", "LIMIT", "STOP_LOSS", "TAKE_PROFIT"]
+      },
+      "doc": "Order type"
+    },
+    {
+      "name": "quantity",
+      "type": "double",
+      "doc": "Trade quantity in base asset"
+    },
+    {
+      "name": "price",
+      "type": "double",
+      "doc": "Trade price in quote asset"
+    },
+    {
+      "name": "notional",
+      "type": "double",
+      "doc": "Notional value (quantity * price)"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Event timestamp in milliseconds"
+    },
+    {
+      "name": "exchange",
+      "type": "string",
+      "doc": "Exchange identifier"
+    },
+    {
+      "name": "walletAddress",
+      "type": ["null", "string"],
+      "doc": "Associated wallet address",
+      "default": null
+    },
+    {
+      "name": "riskLevel",
+      "type": {
+        "type": "enum",
+        "name": "RiskLevel",
+        "symbols": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+      },
+      "doc": "Initial risk assessment"
+    },
+    {
+      "name": "sessionId",
+      "type": ["null", "string"],
+      "doc": "Trading session identifier",
+      "default": null
+    },
+    {
+      "name": "ipAddress",
+      "type": ["null", "string"],
+      "doc": "User IP address",
+      "default": null
+    }
+  ]
+}
