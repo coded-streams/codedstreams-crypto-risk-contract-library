@@ -101,7 +101,7 @@ Common metadata for platform-wide event tracing and versioning.
    <dependency>
        <groupId>com.codedstreams</groupId>
        <artifactId>crypto-risk-contract-library</artifactId>
-       <version>1.0.1</version>
+       <version>1.0.2</version>
    </dependency>
    ```
 
@@ -403,6 +403,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Maintained by**: CodedStreams Data Streaming Engineering Team  
+**Maintained by**: Nestor Martourez @ CodedStreams Data Streaming Engineering 
 **Last Updated**: October 2025  
-**Compatible With**: Trade Producer v1.0+, Risk Engine v1.0+
+**Compatible With**: Trade Producer Simulator v1.0+, Risk Engine v1.0+
