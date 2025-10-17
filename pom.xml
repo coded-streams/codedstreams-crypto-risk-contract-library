@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.codedstreams</groupId>
   <artifactId>codedstreams-crypto-risk-contract-library</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>codedstreams-crypto-risk-contract-library</name>
   <url>http://maven.apache.org</url>
 

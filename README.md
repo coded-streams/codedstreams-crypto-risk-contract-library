@@ -101,7 +101,7 @@ Common metadata for platform-wide event tracing and versioning.
    <dependency>
        <groupId>com.codedstreams</groupId>
        <artifactId>crypto-risk-contract-library</artifactId>
-       <version>1.0.0</version>
+       <version>1.0.1</version>
    </dependency>
    ```
 
