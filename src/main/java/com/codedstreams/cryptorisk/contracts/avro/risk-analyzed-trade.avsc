@@ -1,0 +1,422 @@
+[
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "enum",
+    "name": "TradeSide",
+    "doc": "Trade side enumeration",
+    "symbols": ["BUY", "SELL"]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "enum",
+    "name": "OrderType",
+    "doc": "Order type enumeration",
+    "symbols": ["MARKET", "LIMIT", "STOP_LOSS", "TAKE_PROFIT"]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "enum",
+    "name": "RiskLevel",
+    "doc": "Risk level enumeration",
+    "symbols": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "enum",
+    "name": "RiskTier",
+    "doc": "User risk tier classification",
+    "symbols": ["LOW", "MEDIUM", "HIGH", "RESTRICTED"]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "enum",
+    "name": "ComplianceFlag",
+    "doc": "Compliance and regulatory status flags",
+    "symbols": [
+      "SANCTIONS_CHECK_PASSED",
+      "SANCTIONS_CHECK_FAILED",
+      "GEO_COMPLIANT",
+      "GEO_RESTRICTED",
+      "AML_CHECK_PASSED",
+      "AML_CHECK_FAILED",
+      "KYC_VERIFIED",
+      "KYC_PENDING",
+      "REGULATORY_LIMIT_EXCEEDED",
+      "TAX_REPORTING_REQUIRED"
+    ]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "enum",
+    "name": "RiskMitigationAction",
+    "doc": "Risk mitigation actions taken or recommended",
+    "symbols": [
+      "NONE",
+      "ALERT_ONLY",
+      "LIMIT_REDUCTION",
+      "TRADING_SUSPENSION",
+      "MANUAL_REVIEW_REQUIRED",
+      "AUTO_CANCEL_ORDER",
+      "POSITION_LIMIT_ENFORCED",
+      "MARGIN_CALL",
+      "COMPLIANCE_REVIEW",
+      "LAW_ENFORCEMENT_NOTIFIED"
+    ]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "record",
+    "name": "VolumeAnalysis",
+    "doc": "Volume-based risk analysis results",
+    "fields": [
+      {
+        "name": "isVolumeSpike",
+        "type": "boolean",
+        "doc": "Whether this trade is part of a volume spike pattern"
+      },
+      {
+        "name": "volumePercentile",
+        "type": "double",
+        "doc": "Volume percentile compared to user's historical trades (0.0-1.0)"
+      },
+      {
+        "name": "notionalAmount",
+        "type": "double",
+        "doc": "The notional value of this trade"
+      },
+      {
+        "name": "symbolVolumeZScore",
+        "type": "double",
+        "doc": "Z-score compared to typical volumes for this symbol"
+      }
+    ]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "record",
+    "name": "BehavioralAnalysis",
+    "doc": "Behavioral pattern analysis results",
+    "fields": [
+      {
+        "name": "isWashTrading",
+        "type": "boolean",
+        "doc": "Whether this trade is part of wash trading pattern"
+      },
+      {
+        "name": "isSpoofing",
+        "type": "boolean",
+        "doc": "Whether this trade shows spoofing characteristics"
+      },
+      {
+        "name": "isFrontRunning",
+        "type": "boolean",
+        "doc": "Whether this trade shows front-running patterns"
+      },
+      {
+        "name": "tradingVelocity",
+        "type": "double",
+        "doc": "Trades per minute for this user in current session"
+      },
+      {
+        "name": "cancelToFillRatio",
+        "type": "double",
+        "doc": "Ratio of cancelled orders to filled orders"
+      }
+    ]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "record",
+    "name": "MarketImpactAnalysis",
+    "doc": "Market impact and manipulation analysis",
+    "fields": [
+      {
+        "name": "isLargeOrder",
+        "type": "boolean",
+        "doc": "Whether this order exceeds large order thresholds"
+      },
+      {
+        "name": "marketImpactScore",
+        "type": "double",
+        "doc": "Estimated market impact score (0.0-1.0)"
+      },
+      {
+        "name": "liquidityConsumption",
+        "type": "double",
+        "doc": "Percentage of available liquidity consumed"
+      },
+      {
+        "name": "priceSlippage",
+        "type": "double",
+        "doc": "Actual vs expected price slippage"
+      },
+      {
+        "name": "isFlashCrashContributor",
+        "type": "boolean",
+        "doc": "Whether this trade contributed to flash crash patterns"
+      }
+    ]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "record",
+    "name": "UserTradingProfile",
+    "doc": "User-specific risk profile information",
+    "fields": [
+      {
+        "name": "userId",
+        "type": "string",
+        "doc": "User identifier"
+      },
+      {
+        "name": "totalDailyVolume",
+        "type": "double",
+        "doc": "User's total trading volume for the day"
+      },
+      {
+        "name": "dailyTradeCount",
+        "type": "int",
+        "doc": "Number of trades user has executed today"
+      },
+      {
+        "name": "averageTradeSize",
+        "type": "double",
+        "doc": "User's average trade size"
+      },
+      {
+        "name": "riskTier",
+        "type": "RiskTier",
+        "doc": "User's assigned risk tier"
+      },
+      {
+        "name": "isNewUser",
+        "type": "boolean",
+        "doc": "Whether user is new (first 30 days)"
+      },
+      {
+        "name": "previousViolations",
+        "type": "int",
+        "doc": "Number of previous risk violations"
+      }
+    ]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "record",
+    "name": "AnalyticsMetadata",
+    "doc": "Analytics and processing metadata",
+    "fields": [
+      {
+        "name": "cepEngineVersion",
+        "type": "string",
+        "doc": "Version of the CEP engine that performed analysis"
+      },
+      {
+        "name": "modelVersion",
+        "type": "string",
+        "doc": "Version of risk models used"
+      },
+      {
+        "name": "processingLatencyMs",
+        "type": "long",
+        "doc": "Processing latency in milliseconds"
+      },
+      {
+        "name": "windowSizeMinutes",
+        "type": "int",
+        "doc": "Analysis window size in minutes"
+      },
+      {
+        "name": "confidenceScore",
+        "type": "double",
+        "doc": "Confidence in the risk assessment (0.0-1.0)"
+      },
+      {
+        "name": "correlationId",
+        "type": "string",
+        "doc": "Correlation ID for tracking analysis"
+      }
+    ]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "record",
+    "name": "CryptoTrade",
+    "doc": "Cryptocurrency trade event contract",
+    "fields": [
+      {
+        "name": "tradeId",
+        "type": "string",
+        "doc": "Unique trade identifier"
+      },
+      {
+        "name": "userId",
+        "type": "string",
+        "doc": "User identifier"
+      },
+      {
+        "name": "customerId",
+        "type": "string",
+        "doc": "Customer account identifier"
+      },
+      {
+        "name": "symbol",
+        "type": "string",
+        "doc": "Trading pair symbol e.g., BTC/USDT"
+      },
+      {
+        "name": "baseAsset",
+        "type": "string",
+        "doc": "Base asset e.g., BTC"
+      },
+      {
+        "name": "quoteAsset",
+        "type": "string",
+        "doc": "Quote asset e.g., USDT"
+      },
+      {
+        "name": "side",
+        "type": "TradeSide",
+        "doc": "Trade side"
+      },
+      {
+        "name": "orderType",
+        "type": "OrderType",
+        "doc": "Order type"
+      },
+      {
+        "name": "quantity",
+        "type": "double",
+        "doc": "Trade quantity in base asset"
+      },
+      {
+        "name": "price",
+        "type": "double",
+        "doc": "Trade price in quote asset"
+      },
+      {
+        "name": "notional",
+        "type": "double",
+        "doc": "Notional value (quantity * price)"
+      },
+      {
+        "name": "timestamp",
+        "type": "long",
+        "doc": "Event timestamp in milliseconds"
+      },
+      {
+        "name": "exchange",
+        "type": "string",
+        "doc": "Exchange identifier"
+      },
+      {
+        "name": "walletAddress",
+        "type": ["null", "string"],
+        "doc": "Associated wallet address",
+        "default": null
+      },
+      {
+        "name": "riskLevel",
+        "type": "RiskLevel",
+        "doc": "Initial risk assessment"
+      },
+      {
+        "name": "sessionId",
+        "type": ["null", "string"],
+        "doc": "Trading session identifier",
+        "default": null
+      },
+      {
+        "name": "ipAddress",
+        "type": ["null", "string"],
+        "doc": "User IP address",
+        "default": null
+      }
+    ]
+  },
+  {
+    "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
+    "type": "record",
+    "name": "RiskAnalyzedTrade",
+    "doc": "Cryptocurrency trade with risk analysis results from CEP operations",
+    "fields": [
+      {
+        "name": "originalTrade",
+        "type": "CryptoTrade",
+        "doc": "The original trade event that was analyzed"
+      },
+      {
+        "name": "analysisTimestamp",
+        "type": "long",
+        "doc": "When the risk analysis was performed (milliseconds since epoch)"
+      },
+      {
+        "name": "riskScore",
+        "type": "double",
+        "doc": "Overall risk score from 0.0 (no risk) to 1.0 (maximum risk)"
+      },
+      {
+        "name": "finalRiskLevel",
+        "type": "RiskLevel",
+        "doc": "Final risk level after CEP analysis"
+      },
+      {
+        "name": "triggeredPatterns",
+        "type": {
+          "type": "array",
+          "items": "string"
+        },
+        "doc": "List of risk patterns that this trade triggered"
+      },
+      {
+        "name": "volumeAnalysis",
+        "type": "VolumeAnalysis",
+        "doc": "Volume-based risk analysis"
+      },
+      {
+        "name": "behavioralAnalysis",
+        "type": "BehavioralAnalysis",
+        "doc": "Behavioral pattern analysis"
+      },
+      {
+        "name": "marketImpactAnalysis",
+        "type": "MarketImpactAnalysis",
+        "doc": "Market impact analysis"
+      },
+      {
+        "name": "userRiskProfile",
+        "type": "UserTradingProfile",
+        "doc": "User risk profile at time of analysis"
+      },
+      {
+        "name": "complianceFlags",
+        "type": {
+          "type": "array",
+          "items": "ComplianceFlag"
+        },
+        "doc": "Compliance and regulatory flags"
+      },
+      {
+        "name": "riskMitigationActions",
+        "type": {
+          "type": "array",
+          "items": "RiskMitigationAction"
+        },
+        "doc": "Risk mitigation actions taken or recommended"
+      },
+      {
+        "name": "analyticsMetadata",
+        "type": "AnalyticsMetadata",
+        "doc": "Analytics processing metadata"
+      },
+      {
+        "name": "additionalContext",
+        "type": {
+          "type": "map",
+          "values": "string"
+        },
+        "doc": "Additional context-specific data"
+      }
+    ]
+  }
+]
