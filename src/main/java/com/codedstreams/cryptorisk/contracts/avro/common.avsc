@@ -1,5 +1,5 @@
 {
-  "namespace": "com.cryptofirm.contracts.schemas",
+  "namespace": "com.codedstreams.cryptorisk.contracts.schemas",
   "type": "record",
   "name": "PlatformMetadata",
   "doc": "Common platform metadata",
